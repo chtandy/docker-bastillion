@@ -1,0 +1,19 @@
+version: '3'
+services:
+  bastillion:
+    image: bastillion:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: bastillion
+    hostname: bastillion
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./keydb:/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

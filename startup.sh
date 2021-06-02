@@ -6,11 +6,11 @@ DistinationFile=/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb/bastill
 DistinationDir=/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb
 
 if [ ! -f $DistinationFile ];  then
-    mv $SourceFile $DistinationFile
-    ln -s $DistinationFile $SourceFile 
+    cp $SourceFile $DistinationFile
+    ln -sf $DistinationFile $SourceFile 
 elif [ -f $DistinationDir ]; then
-    rm -f $SourceFile
-    ln -s $DistinationFile $SourceFile
+    #rm -f $SourceFile
+    ln -sf $DistinationFile $SourceFile
 fi
 
 cd jetty;

@@ -11,7 +11,9 @@ RUN wget https://github.com/bastillion-io/Bastillion/releases/download/v3.10.00/
   && rm -f bastillion-jetty-v3.10_00.tar.gz
 
 RUN sed -i -e 's|^dbPassword.*|dbPassword=Bastillion-jetty|' Bastillion-jetty/jetty/bastillion/WEB-INF/classes/BastillionConfig.properties
-
+COPY bastillion.jceks.source /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/bastillion.jceks
 EXPOSE 8443
 WORKDIR /Bastillion-jetty
-ENTRYPOINT ["./startBastillion.sh"]
+COPY startup.sh .
+RUN chmod +x startup.sh
+ENTRYPOINT ["./startup.sh"]

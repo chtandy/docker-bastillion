@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     container_name: bastillion
     hostname: bastillion
+    environment:
+      JAVA_OPTS: "-Xms1024m -Xmx1024m"
     ports:
       - "8443:8443"
     volumes:

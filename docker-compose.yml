@@ -13,6 +13,7 @@ services:
       - "8443:8443"
     volumes:
       - ./keydb:/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb
+      - ./logs:/Bastillion-jetty/jetty/logs
     restart: unless-stopped
     logging:
       driver: "json-file"

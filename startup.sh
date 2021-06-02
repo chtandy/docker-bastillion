@@ -8,7 +8,7 @@ DistinationDir=/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb
 if [ ! -f $DistinationFile ];  then
     cp $SourceFile $DistinationFile
     ln -sf $DistinationFile $SourceFile 
-elif [ -f $DistinationDir ]; then
+else
     #rm -f $SourceFile
     ln -sf $DistinationFile $SourceFile
 fi

@@ -11,5 +11,10 @@ else
     ln -sf $DistinationFile $SourceFile
 fi
 
+if [ ! -z $PRIVATEKEYNAME ] && [ ! -z $PUBLICKEYNAME ]; then
+    sed -i -e "s|^privateKey.*|privateKey=/data/$PRIVATEKEYNAME|" /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/BastillionConfig.properties
+    sed -i -e "s|^publicKey.*|publicKey=/data/$PUBLICKEYNAME|" /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/BastillionConfig.properties
+fi   
+
 cd jetty;
 java ${JAVA_OPTS} -jar start.jar

@@ -9,8 +9,8 @@ services:
     hostname: bastillion
     environment:
       JAVA_OPTS: "-Xms1024m -Xmx1024m"
-      PRIVATEKEYNAME: user     # 若要系統產生，則使用空值
-      PUBLICKEYNAME: user.pub  # 若要系統產生，則使用空值
+      PRIVATEKEYNAME: ""     # 若要系統產生，則使用空值
+      PUBLICKEYNAME: ""  # 若要系統產生，則使用空值
     ports:
       - "8443:8443"
     volumes:

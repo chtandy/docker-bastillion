@@ -10,6 +10,7 @@ services:
     container_name: bastillion
     hostname: bastillion
     environment:
+      JAVA_OPTS: ${JAVA_OPTS}
       EnableInternalAudio: ${EnableInternalAudio}
     ports: 
       - "8443:8443"

@@ -15,3 +15,4 @@ password:changeme
 ### 自定義key ,若為空值則系統自動產生
 - 將privatekey 與 publickey 放在./data/keyfile 目錄下
 - public key 副檔名 .pub
+- 第一次啟動完成後，key就可以移除

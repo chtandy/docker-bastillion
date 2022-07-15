@@ -4,8 +4,6 @@
 
 
 ### 備註
-- bastillion.jceks.source 檔案是初始化的檔案，使用`docker cp { container }:/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/bastillion.jceks` 出來的
-  - 該檔案並無持久化
 
 ### init user & passwd
 ```
@@ -15,5 +13,5 @@ password:changeme
 
 ### 首次使用，先定義使用自定義key 或是系統產生
 ### 自定義key ,若為空值則系統自動產生
-- 將privatekey 與 publickey 放在./data/sshkey 目錄下
+- 將privatekey 與 publickey 放在./data/keyfile 目錄下
 - public key 副檔名 .pub

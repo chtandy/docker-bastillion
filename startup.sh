@@ -23,6 +23,10 @@ if [ ! -z $PRIVATEKEYNAME ] && [ ! -z $PUBLICKEYNAME ]; then
     sed -i -e "s|^publicKey.*|publicKey=/data/$PUBLICKEYNAME|" ${BatillionConfig}
 fi   
 
+if [ ${EnableInternalAudio} == 'true' ]; then
+    sed -i -e "s|enableInternalAudit.*|enableInternalAudit=true|" ${BatillionConfig}
+fi
+
 
 cd /Bastillion-jetty/jetty;
 java ${JAVA_OPTS} -jar start.jar

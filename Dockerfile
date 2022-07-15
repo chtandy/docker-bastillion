@@ -5,6 +5,7 @@ RUN wget https://github.com/bastillion-io/Bastillion/releases/download/v${BASTIL
   && rm -f bastillion-jetty-v${BASTILLION_VERSION}_00.tar.gz
 
 COPY startup.sh /
+COPY log4j2.xml /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/ 
 RUN chmod +x /startup.sh
 EXPOSE 8443
 ENTRYPOINT ["/startup.sh"]

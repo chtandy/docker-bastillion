@@ -1,23 +1,22 @@
 version: '3'
 services:
   bastillion:
-    image: bastillion:latest
+    image: bastillion
     build:
       context: ./
       dockerfile: Dockerfile
+      args:
+        BASTILLION_VERSION: ${BASTILLION_VERSION}
     container_name: bastillion
     hostname: bastillion
-    environment:
-      JAVA_OPTS: "-Xms1024m -Xmx1024m"
-      PRIVATEKEYNAME: ""     # 若要系統產生，則使用空值
-      PUBLICKEYNAME: ""  # 若要系統產生，則使用空值
-    ports:
+    ports: 
       - "8443:8443"
     volumes:
       - ./data/keydb:/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/keydb
       - ./data/logs:/Bastillion-jetty/jetty/logs
-      - ./data/sshkey:/data
+      - ./data/keyfile:/data
     restart: unless-stopped
+    #tty: true
     logging:
       driver: "json-file"
       options:

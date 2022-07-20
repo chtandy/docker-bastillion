@@ -16,3 +16,10 @@ password:changeme
 - 將privatekey 與 publickey 放在./data/keyfile 目錄下
 - public key 副檔名 .pub
 - 第一次啟動完成後，key就可以移除
+
+
+### 開啟audit 審核功能
+- 編輯`.env`,將`EnableInternalAudio`,將他設置為'true' 
+
+
+

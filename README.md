@@ -4,7 +4,13 @@
 
 
 ### 備註
-
+- 一款可以使用web base 的工具來使用ssh terminal，有著以下優點：
+  1. 使用者管理
+  2. 設定檔管理
+  3. 主機管理
+  4. 安全性管理，使用2FA
+  5. Audit 機制，記錄每個連線下所操作的完整流程
+ 
 ### init user & passwd
 ```
 username:admin

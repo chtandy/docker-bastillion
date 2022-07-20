@@ -9,6 +9,7 @@ RUN sed -i '/<Loggers>/a\        </Logger>' /Bastillion-jetty/jetty/bastillion/W
   && sed -i '/<Loggers>/a\            <AppenderRef ref="audit-appender"/' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml \
   && sed -i '/<Loggers>/a\        <Logger name="io.bastillion.manage.util.SystemAudit" level="info" additivity="false">' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml
 
+## 修改entrypoint, 修改環境後執行bastillion 
 RUN { \
      echo '#!/bin/bash'; \
      echo 'SourceFile=/Bastillion-jetty/jetty/bastillion/WEB-INF/classes/bastillion.jceks'; \

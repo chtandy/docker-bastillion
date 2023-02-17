@@ -25,7 +25,7 @@ password:changeme
 
 
 ### 開啟audit 審核功能
-- 編輯`.env`,將`EnableInternalAudio`,將他設置為'true' 
+- 編輯`.env`,將`EnableInternalAudit`,將他設置為'true' 
 
 
 

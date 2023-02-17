@@ -13,7 +13,7 @@ services:
       JAVA_OPTS: ${JAVA_OPTS}
       PRIVATEKEYNAME: ${PRIVATEKEYNAME}
       PUBLICKEYNAME: ${PUBLICKEYNAME}
-      EnableInternalAudio: ${EnableInternalAudio}
+      EnableInternalAudit: ${EnableInternalAudit}
     ports: 
       - "8443:8443"
     volumes:

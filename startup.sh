@@ -25,7 +25,7 @@ if [ ! -z $PRIVATEKEYNAME ] && [ ! -z $PUBLICKEYNAME ]; then
     sed -i -e "s|^publicKey.*|publicKey=/data/$PUBLICKEYNAME|" ${BatillionConfig}
 fi   
 
-if [ ${EnableInternalAudio} == 'true' ]; then
+if [ ${EnableInternalAudit} == "true" ]; then
     sed -i -e "s|enableInternalAudit.*|enableInternalAudit=true|" ${BatillionConfig}
 fi
 

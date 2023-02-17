@@ -6,7 +6,7 @@ RUN wget https://github.com/bastillion-io/Bastillion/releases/download/v${BASTIL
 
 ## 開啟審計功能
 RUN sed -i '/<Loggers>/a\        </Logger>' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml \
-  && sed -i '/<Loggers>/a\            <AppenderRef ref="audit-appender"/' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml \
+  && sed -i '/<Loggers>/a\            <AppenderRef ref="audit-appender"/>' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml \
   && sed -i '/<Loggers>/a\        <Logger name="io.bastillion.manage.util.SystemAudit" level="info" additivity="false">' /Bastillion-jetty/jetty/bastillion/WEB-INF/classes/log4j2.xml
 
 ## 修改entrypoint, 修改環境後執行bastillion 
@@ -29,7 +29,7 @@ RUN { \
      echo '    sed -i -e "s|^privateKey.*|privateKey=/data/$PRIVATEKEYNAME|" ${BatillionConfig}'; \
      echo '    sed -i -e "s|^publicKey.*|publicKey=/data/$PUBLICKEYNAME|" ${BatillionConfig}'; \
      echo 'fi'; \
-     echo 'if [ ${EnableInternalAudio} == "true" ]; then'; \
+     echo 'if [ ${EnableInternalAudit} ]; then'; \
      echo '    sed -i -e "s|^enableInternalAudit.*|enableInternalAudit=true|" ${BatillionConfig}'; \
      echo 'fi'; \
      echo 'cd /Bastillion-jetty/jetty;'; \

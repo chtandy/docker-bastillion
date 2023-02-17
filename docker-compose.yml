@@ -1,7 +1,7 @@
 version: '3'
 services:
   bastillion:
-    image: r19750927/bastillion:${BASTILLION_VERSION}
+    image: r19750927/bastillion:${BASTILLION_VERSION}-v1
     build:
       context: ./
       dockerfile: Dockerfile

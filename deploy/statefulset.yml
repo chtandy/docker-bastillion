@@ -1,0 +1,68 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bastillion
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+    - host: bastillion.nexdata.uat
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bastillion
+                port:
+                  number: 8443
+---
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: default
+  name: bastillion
+spec:
+  type: ClusterIP
+  ports:
+    - name: https
+      protocol: TCP
+      port: 8443
+      targetPort: tcp8443
+  selector:
+    app: bastillion
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bastillion
+  namespace: default
+spec:
+  serviceName: bastillion
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bastillion
+  template:
+    metadata:
+      labels:
+        app: bastillion
+    spec:
+      containers:
+      - name: bastillion
+        image: r19750927/bastillion:3.14-v1
+        env: 
+        - name: JAVA_OPTS
+          value: "-Xms1024m -Xmx1024m"
+        - name: EnableInternalAudit
+          value: "true"
+        ports:
+        - name: tcp8443
+          containerPort: 8443
